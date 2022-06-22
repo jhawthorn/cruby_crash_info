@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "lib/cruby_crash_info/version"
-
 Gem::Specification.new do |spec|
   spec.name = "cruby_crash_info"
-  spec.version = CrubyCrashInfo::VERSION
+  spec.version = "0.1.0"
   spec.authors = ["John Hawthorn"]
   spec.email = ["john@hawthorn.email"]
 
@@ -28,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.extensions = ["ext/cruby_crash_info/extconf.rb"]
+  spec.extensions = ["ext/extconf.rb"]
 end

@@ -14,7 +14,7 @@ require "rake/extensiontask"
 task build: :compile
 
 Rake::ExtensionTask.new("cruby_crash_info") do |ext|
-  ext.lib_dir = "lib/cruby_crash_info"
+  ext.ext_dir = "ext/"
 end
 
 task default: %i[clobber compile test]
