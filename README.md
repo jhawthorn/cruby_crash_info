@@ -1,8 +1,6 @@
 # CrubyCrashInfo
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cruby_crash_info`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This adds the abilitiy to add extra info to the end of Ruby's bug/crash reports.
 
 ## Installation
 
@@ -16,13 +14,44 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install cruby_crash_info
-
 ## Usage
 
-TODO: Write usage instructions here
+Assign a String to `CRubyCrashInfo.info`.
+This can be done multiple times and only the latest assigned info will be used.
+
+```
+CRubyCrashInfo.info = <<EOF
+Extra info to print!
+request_id: #{rand(9999999999)}
+EOF
+```
+
+*DEMO:* cause a crash
+
+``` ruby
+require "fiddle"
+Fiddle.dlunwrap(0x1234).to_s # SEGV
+```
+
+```
+test.rb:9: [BUG] Segmentation fault at 0x0000000000001244
+ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]
+
+-- Control frame information -----------------------------------------------
+c:0003 p:---- s:0010 e:000009 CFUNC  :to_s
+c:0002 p:0054 s:0006 e:000005 EVAL   test.rb:9 [FINISH]
+c:0001 p:0000 s:0003 E:0021a0 (none) [FINISH]
+
+-------------------8<-----------------
+7ffcc7f0b000-7ffcc7f0d000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+ * Extra crash info:
+Extra info to print!
+request_id: 4843151088
+
+```
 
 ## Development
 
