@@ -26,7 +26,7 @@ request_id: #{rand(9999999999)}
 EOF
 ```
 
-*DEMO:* cause a crash
+**DEMO:** cause a crash
 
 ``` ruby
 require "fiddle"
