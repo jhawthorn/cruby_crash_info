@@ -12,6 +12,10 @@ static VALUE rb_set_extra_debug_info(VALUE self, VALUE str) {
     return str;
 }
 
+static VALUE rb_get_extra_debug_info(VALUE self) {
+    return extra_debug_info;
+}
+
 static void report_extra_crash_info(FILE *f, void *data) {
     if (!RTEST(extra_debug_info)) return;
 
@@ -25,6 +29,7 @@ Init_cruby_crash_info(void)
 {
   rb_mCrubyCrashInfo = rb_define_module("CRubyCrashInfo");
   rb_define_singleton_method(rb_mCrubyCrashInfo, "info=", rb_set_extra_debug_info, 1);
+  rb_define_singleton_method(rb_mCrubyCrashInfo, "info", rb_get_extra_debug_info, 0);
   rb_gc_register_address(&extra_debug_info);
   rb_bug_reporter_add(report_extra_crash_info, NULL);
 }
