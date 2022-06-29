@@ -2,4 +2,4 @@
 
 require "mkmf"
 
-create_makefile("cruby_crash_info/cruby_crash_info")
+create_makefile("cruby_crash_info")
