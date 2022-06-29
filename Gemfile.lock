@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cruby_crash_info (0.1.0)
+    cruby_crash_info (0.1.1)
 
 GEM
   remote: https://rubygems.org/
